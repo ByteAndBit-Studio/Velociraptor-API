@@ -1,0 +1,9 @@
+<settings>
+    <servers>
+        <server>
+            <id>byteandbit-release</id>
+            <username>123name</username>
+            <password>123password</password>
+        </server>
+    </servers>
+</settings>

@@ -1,9 +1,24 @@
 package de.byteandbit.velociraptor.api.pipeline;
 
-import de.byteandbit.velociraptor.pipeline.command.CommandExecutor;
-
+/**
+ *
+ */
 public interface PipelineAPI {
+    /**
+     * Gibt einen neuen PipelineExecutor zurück.
+     * @see PipelineExecutor
+     */
     PipelineExecutor newPipelineExecutor();
+
+    /**
+     * Führt eine Pipeline aus.
+     * @param pipeline die Pipeline, die ausgeführt werden soll
+     * @see
+     */
     void executePipeline(Pipeline pipeline);
-    CommandExecutor getCommandExecutor();
+
+    /**
+     * Nur für die interne Verwendung gedacht.
+     */
+    CommandExecutorAPI getInternalCommandExecutor();
 }

@@ -1,10 +1,13 @@
 package de.byteandbit.velociraptor.api.events.sell;
 
+import lombok.AllArgsConstructor;
+
 /**
- * Dieses Verkaufsevent wird vor unseren Checks (ist der Spieler überhaupt in der Verkaufszone, etc) aufgerufen.
+ * Dieses Verkaufsevent wird aufgerufen, bevor der Bot die Items aus dem Lager holt.
  * Du kannst den Verkauf beenden, indem du die cancelled Variable auf true setzt.
  */
-public class SellPreCheckEvent extends SellEvent {
+@AllArgsConstructor
+public class SellPreWarehouseEvent extends SellEvent {
     private boolean cancelled;
 
     /**

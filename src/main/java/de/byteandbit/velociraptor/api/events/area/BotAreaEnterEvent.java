@@ -3,8 +3,8 @@ package de.byteandbit.velociraptor.api.events.area;
 import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
 
 /**
- * Dieses Event wird aufgerufen sobald ein Spieler die Bot Zone wieder verlässt.
+ * Dieses Event wird aufgerufen sobald ein Spieler die Bot Zone betritt.
  */
-public class BotAreaLeaveEvent extends PlayerEvent {
+public class BotAreaEnterEvent extends PlayerEvent {
 
 }

@@ -3,15 +3,15 @@ package de.byteandbit.velociraptor.api.events.purchase;
 import lombok.AllArgsConstructor;
 
 /**
- * Dieses Verkaufsevent wird aufgerufen, bevor der Bot die Items aus dem Lager holt.
- * Du kannst den Verkauf beenden, indem du die cancelled Variable auf true setzt.
+ * Dieses Ankaufevent wird aufgerufen, nachdem Bot die Ankaufsitems ins Lager gelegt und die falschen Items droppt/zurücklegt hat.
+ * Du kannst den Ankauf beenden, indem du die cancelled Variable auf true setzt.
  */
 @AllArgsConstructor
-public class SellPreWarehouseEvent extends PurchaseEvent {
+public class PurchasePostWarehouseEvent extends PurchaseEvent {
     private boolean cancelled;
 
     /**
-     * Falls dies true zurückgibt, wird der Verkauf abgebrochen.
+     * Falls dies true zurückgibt, wird der Ankauf abgebrochen.
      */
     public boolean isCancelled() {
         return cancelled;

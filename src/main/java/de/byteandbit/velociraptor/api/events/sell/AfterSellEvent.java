@@ -1,20 +1,18 @@
 package de.byteandbit.velociraptor.api.events.sell;
 
+import lombok.AllArgsConstructor;
+
 /**
- * Dieses Verkaufsevent wird kurz bevor der Bot die Items aus dem Lager holt.
- * Du kannst den Verkauf beenden bzw. abbrechen, indem du die cancelled Variable auf true setzt.
+ * Dieses Verkaufevent wird nach jedem abgeschlossenen Verkauf aufgerufen.
  */
-public class SellPreDropEvent extends SellEvent {
+@AllArgsConstructor
+public class AfterSellEvent extends SellEvent {
     private boolean cancelled;
 
     /**
-     * Falls dies true zurückgibt, wird der Verkauf abgebrochen.
+     * Gibt true zurück, falls der Verkauf abgebrochen wurde.
      */
-    public boolean isCancelled() {
+    public boolean wasCancelled() {
         return cancelled;
-    }
-
-    public void setCancelled(boolean cancelled) {
-        this.cancelled = cancelled;
     }
 }

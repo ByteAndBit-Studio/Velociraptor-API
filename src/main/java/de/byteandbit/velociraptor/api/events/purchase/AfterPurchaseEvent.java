@@ -3,14 +3,14 @@ package de.byteandbit.velociraptor.api.events.purchase;
 import lombok.AllArgsConstructor;
 
 /**
- * Dieses Verkaufevent wird nach jedem abgeschlossenen Verkauf aufgerufen.
+ * Dieses Ankaufsevent wird nach jedem abgeschlossenen Ankauf aufgerufen.
  */
 @AllArgsConstructor
-public class AfterSellEvent extends PurchaseEvent {
+public class AfterPurchaseEvent extends PurchaseEvent {
     private boolean cancelled;
 
     /**
-     * Gibt true zurück, falls der Verkauf abgebrochen wurde.
+     * Gibt true zurück, falls der Ankauf abgebrochen wurde.
      */
     public boolean wasCancelled() {
         return cancelled;
