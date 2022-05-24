@@ -48,4 +48,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>byteandbit-release</id>
+            <url>https://nexus.byteandbit.cloud/repository/maven-snapshots</url>
+        </repository>
+    </distributionManagement>
 </project>
