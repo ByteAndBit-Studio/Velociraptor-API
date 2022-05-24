@@ -16,6 +16,7 @@ public class MoneyInformation {
     /**
      * Gibt das aktuelle Guthaben zurück.
      * Hinweis: Wird nur periodisch eingelesen und ist nicht Echtzeit.
+     *
      * @see MoneyInformation#getLastUpdated
      */
     public double getBalance() {
@@ -25,6 +26,7 @@ public class MoneyInformation {
     /**
      * Gibt das aktuelle Bankguthaben zurück.
      * Hinweis: Wird nur periodisch eingelesen und ist nicht Echtzeit.
+     *
      * @see MoneyInformation#getLastUpdated
      */
     public double getBankBalance() {

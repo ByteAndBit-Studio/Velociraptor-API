@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Basis für die Verkaufsevents.
+ *
  * @see SellPreWarehouseEvent
  * @see SellPreDropEvent
  */

@@ -87,7 +87,7 @@ public class Item {
      * Gibt die Anzahl des Items zurück.
      * Bei Verkauf: Wie oft es gedroppt werden soll.
      * Bei Ankauf: In welchen Stückzahlen angekauft werden soll
-     *
+     * <p>
      * Beispiel für Ankauf: amount=16, price=10
      * Dann wird angekauft: 16 für 10$, 32 für 20$, 48 für 30$, etc.
      * Packt der Kunde nun 20 Items in die Kiste werden 4 wieder zurückgedroppt und 16 für 10$ angekauft.

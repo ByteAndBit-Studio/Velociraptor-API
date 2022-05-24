@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Basis für die Ankaufsevents
+ *
  * @see PurchasePostWarehouseEvent
  * @see PurchasePreWarehouseEvent
  */

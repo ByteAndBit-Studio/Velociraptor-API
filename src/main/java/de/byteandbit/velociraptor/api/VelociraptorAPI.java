@@ -5,7 +5,6 @@ import de.byteandbit.velociraptor.api.pipeline.PipelineAPI;
 import de.byteandbit.velociraptor.api.stats.StatsAPI;
 import org.slf4j.Logger;
 
-
 /**
  * Dies ist die Hauptklasse der Velociraptor API.
  * Von hier aus kannst du Events registrieren oder Aktionen triggern.
@@ -20,30 +19,28 @@ public class VelociraptorAPI {
      * public MeinEventListener() {
      * VelociraptorAPI.EVENT_BUS.register(this);
      * }
-     * <p>
+     * <p>w
      * \@EventHandler
      * public void onSellEvent(SellPreCheckEvent event) {}
      */
-    public static EventBus EVENT_BUS = new EventBus();
+    public final EventBus EVENT_BUS;
 
-    private static VelociraptorAPI instance;
-
-    private static Logger logger;
+    private Logger logger;
     private StatsAPI statsApi;
     private PipelineAPI pipelineApi;
 
-    public VelociraptorAPI(Logger logger, StatsAPI statsApi, PipelineAPI pipelineApi) {
-        instance = this;
-        this.logger = logger;
-        this.statsApi = statsApi;
-        this.pipelineApi = pipelineApi;
-    }
+    public VelociraptorAPI() {
+        try {
+            Class<VelociraptorImpl> implClass = (Class<VelociraptorImpl>) Class.forName("de.byteandbit.velociraptor.api.impl.APIImpl");
+            VelociraptorImpl impl = implClass.newInstance();
 
-    /**
-     * Gibt den Logger für die velociraptor.log zurück.
-     */
-    public static Logger getLogger() {
-        return logger;
+            this.logger = impl.getLogger();
+            this.statsApi = impl.getStatsImpl();
+            this.pipelineApi = impl.getPipelineImpl();
+            this.EVENT_BUS = new EventBus(logger);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException("Es ist ein Fehler beim Laden der Velociraptor API aufgetreten", e);
+        }
     }
 
     /**
@@ -61,9 +58,9 @@ public class VelociraptorAPI {
     }
 
     /**
-     * Gibt die aktuelle VelociraptorAPI Instanz zurück.
+     * Gibt den Logger für die velociraptor.log zurück.
      */
-    public static VelociraptorAPI getInstance() {
-        return instance;
+    public Logger getLogger() {
+        return logger;
     }
 }

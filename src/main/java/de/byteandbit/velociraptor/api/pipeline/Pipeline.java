@@ -1,6 +1,5 @@
 package de.byteandbit.velociraptor.api.pipeline;
 
-import de.byteandbit.velociraptor.api.pipeline.PipelineElement;
 import lombok.Getter;
 
 import java.util.LinkedList;

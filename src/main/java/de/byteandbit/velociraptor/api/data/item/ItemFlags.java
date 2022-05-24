@@ -7,7 +7,7 @@ package de.byteandbit.velociraptor.api.data.item;
  */
 public class ItemFlags {
     public static final int DISPLAYNAME_EQUALS = 1 << 0;
-    public static final int DISPLAYNAME_CONTAINS = 1  << 1;
+    public static final int DISPLAYNAME_CONTAINS = 1 << 1;
     public static final int NOT_USED = 1 << 2;
     public static final int NO_DAMAGE = 1 << 3;
     public static final int REPAIRCOST_EQUALS = 1 << 4;
@@ -30,7 +30,7 @@ public class ItemFlags {
      * Hilfsfunktion zur Setzung einer Flag.
      *
      * @param input der aktuelle Flags Wert
-     * @param flag die Flag die gesetzt werden soll, bspw. ItemFlags.ITEMLORE_EQUALS
+     * @param flag  die Flag die gesetzt werden soll, bspw. ItemFlags.ITEMLORE_EQUALS
      * @return der neue Flags Wert
      */
     public static int setFlag(int input, int flag) {
@@ -41,7 +41,7 @@ public class ItemFlags {
      * Hilfsfunktion zum Entfernen einer Flag-
      *
      * @param input der aktuelle Flags Wert
-     * @param flag die Flag die entfernt werden soll, bspw. ItemFlags.ITEMLORE_EQUALS
+     * @param flag  die Flag die entfernt werden soll, bspw. ItemFlags.ITEMLORE_EQUALS
      * @return der neue Flags Wert
      */
     public static int unsetFlag(int input, int flag) {
@@ -52,7 +52,7 @@ public class ItemFlags {
      * Prüft ob eine Flag gesetzt ist.
      *
      * @param input der aktuelle Flags Wert
-     * @param flag die Flag die geprüft werden soll, bspw. ItemFlags.ITEMLORE_EQUALS
+     * @param flag  die Flag die geprüft werden soll, bspw. ItemFlags.ITEMLORE_EQUALS
      * @return true, falls die Flag gesetzt ist
      */
     public static boolean hasFlag(int input, int flag) {

@@ -11,6 +11,7 @@ public abstract class PlayerEvent extends Event {
 
     /**
      * Gibt den Spielernamen zurück, der das Event verursacht hat.
+     *
      * @return der echte Spielername (nicht der Nickname!)
      */
     public String getPlayerName() {
@@ -19,6 +20,7 @@ public abstract class PlayerEvent extends Event {
 
     /**
      * Gibt die UUID des Spielers zurück, der das Event verursacht hat.
+     *
      * @return die Spieler UUID
      */
     public String getPlayerUUID() {
