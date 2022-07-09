@@ -52,7 +52,7 @@ spec:
                   sh('sed -i \'s/123name/\'"$MAVEN_USERNAME"\'/g\' settings.xml')
                   sh('sed -i \'s/123password/\'"$MAVEN_PASSWORD"\'/g\' settings.xml')
                   sh('mvn -s settings.xml clean package deploy')
-                  sh 'cp target/velociraptor-api-b$BUILD_NUMBER.jar /shared/Velociraptor-API-b$BUILD_NUMBER.jar'
+                  sh 'cp target/velociraptor-api-b$BUILD_NUMBER-SNAPSHOT.jar /shared/Velociraptor-API-b$BUILD_NUMBER.jar'
                 }
               }
             }
