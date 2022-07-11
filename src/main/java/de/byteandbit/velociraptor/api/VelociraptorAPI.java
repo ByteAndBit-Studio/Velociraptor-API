@@ -19,7 +19,7 @@ public class VelociraptorAPI {
      * public MeinEventListener() {
      * VelociraptorAPI.EVENT_BUS.register(this);
      * }
-     * <p>w
+     * <p>
      * \@EventHandler
      * public void onSellEvent(SellPreCheckEvent event) {}
      */
@@ -31,7 +31,7 @@ public class VelociraptorAPI {
 
     public VelociraptorAPI() {
         try {
-            Class<VelociraptorImpl> implClass = (Class<VelociraptorImpl>) Class.forName("de.byteandbit.velociraptor.api.impl.APIImpl");
+            Class<VelociraptorImpl> implClass = (Class<VelociraptorImpl>) Class.forName("de.byteandbit.velociraptor.api.impl.InternalApiProvider");
             VelociraptorImpl impl = implClass.newInstance();
 
             this.logger = impl.getLogger();
