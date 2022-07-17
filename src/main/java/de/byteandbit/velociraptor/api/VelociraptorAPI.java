@@ -31,7 +31,7 @@ public class VelociraptorAPI {
 
     public VelociraptorAPI() {
         try {
-            Class<VelociraptorImpl> implClass = (Class<VelociraptorImpl>) Class.forName("de.byteandbit.velociraptor.api.impl.InternalApiProvider");
+            Class<VelociraptorImpl> implClass = (Class<VelociraptorImpl>) Class.forName("de.byteandbit.velociraptor.api_impl.InternalApiProvider");
             VelociraptorImpl impl = implClass.newInstance();
 
             this.logger = impl.getLogger();
