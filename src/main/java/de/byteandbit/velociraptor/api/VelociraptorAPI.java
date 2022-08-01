@@ -23,7 +23,7 @@ public class VelociraptorAPI {
      * \@EventHandler
      * public void onSellEvent(SellPreCheckEvent event) {}
      */
-    public final EventBus EVENT_BUS;
+    public static EventBus EVENT_BUS;
 
     private Logger logger;
     private StatsAPI statsApi;
