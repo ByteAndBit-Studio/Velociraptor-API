@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @see SellPreWarehouseEvent
  * @see SellPreDropEvent
- * @see PlayerLeftZoneEvent
+ * @see SellAbortedEvent
  */
 public abstract class SellEvent extends PlayerEvent {
     protected List<Item> items;

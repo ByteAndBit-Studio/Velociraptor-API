@@ -1,5 +1,6 @@
 package de.byteandbit.velociraptor.api;
 
+import de.byteandbit.velociraptor.api.chat.ChatAPI;
 import de.byteandbit.velociraptor.api.events.EventBus;
 import de.byteandbit.velociraptor.api.pipeline.PipelineAPI;
 import de.byteandbit.velociraptor.api.stats.StatsAPI;
@@ -27,6 +28,7 @@ public class VelociraptorAPI {
 
     private Logger logger;
     private StatsAPI statsApi;
+    private ChatAPI chatApi;
     private PipelineAPI pipelineApi;
 
     public VelociraptorAPI() {
@@ -37,6 +39,7 @@ public class VelociraptorAPI {
             this.logger = impl.getLogger();
             this.statsApi = impl.getStatsImpl();
             this.pipelineApi = impl.getPipelineImpl();
+            this.chatApi = impl.getChatImpl();
             this.EVENT_BUS = new EventBus(logger);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             throw new RuntimeException("Es ist ein Fehler beim Laden der Velociraptor API aufgetreten", e);
@@ -55,6 +58,13 @@ public class VelociraptorAPI {
      */
     public PipelineAPI getPipelineAPI() {
         return this.pipelineApi;
+    }
+
+    /**
+     * Gibt die Chat API zurück.
+     */
+    public ChatAPI getChatAPI() {
+        return this.chatApi;
     }
 
     /**
