@@ -7,4 +7,7 @@ import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
  */
 public class BotAreaLeaveEvent extends PlayerEvent {
 
+    public BotAreaLeaveEvent(String playerName, String playerUUID) {
+        super(playerName, playerUUID);
+    }
 }

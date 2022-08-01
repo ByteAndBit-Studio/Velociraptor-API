@@ -14,7 +14,14 @@ import java.util.List;
 public abstract class PurchaseEvent extends PlayerEvent {
     protected List<Item> items;
     protected List<Item> acceptedItems;
-    protected int payAmount;
+    protected double payAmount;
+
+    public PurchaseEvent(String playerName, String playerUUID, List<Item> items, List<Item> acceptedItems, double payAmount) {
+        super(playerName, playerUUID);
+        this.items = items;
+        this.acceptedItems = acceptedItems;
+        this.payAmount = payAmount;
+    }
 
     /**
      * Gibt die Items zurück, die der Spieler eingelegt hat.
@@ -33,7 +40,7 @@ public abstract class PurchaseEvent extends PlayerEvent {
     /**
      * Gibt den ausgezahlten Betrag an den Spieler zurück.
      */
-    public int getPayOutAmount() {
+    public double getPayOutAmount() {
         return payAmount;
     }
 }

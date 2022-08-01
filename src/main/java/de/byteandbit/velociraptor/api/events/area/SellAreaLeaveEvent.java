@@ -7,4 +7,7 @@ import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
  */
 public class SellAreaLeaveEvent extends PlayerEvent {
 
+    public SellAreaLeaveEvent(String playerName, String playerUUID) {
+        super(playerName, playerUUID);
+    }
 }
