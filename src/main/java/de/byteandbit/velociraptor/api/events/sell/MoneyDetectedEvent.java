@@ -1,21 +1,26 @@
 package de.byteandbit.velociraptor.api.events.sell;
 
 import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
-import lombok.AllArgsConstructor;
 
 /**
  * Dieses Event wird aufgerufen, direkt nachdem der Bot eine Zahlung erkannt hat, egal ob der Spieler in der Verkaufszone steht oder nicht.
  */
-@AllArgsConstructor
 public class MoneyDetectedEvent extends PlayerEvent {
     private boolean cancelled;
     private boolean outsideZone;
-    private int payAmount;
+    private double payAmount;
+
+    public MoneyDetectedEvent(String playerName, String playerUUID, boolean outsideZone, double payAmount) {
+        super(playerName, playerUUID);
+        this.outsideZone = outsideZone;
+        this.payAmount = payAmount;
+    }
+
 
     /**
      * Gibt den bezahlten Betrag an den Bot zurück.
      */
-    public int getPayAmount() {
+    public double getPayAmount() {
         return payAmount;
     }
 

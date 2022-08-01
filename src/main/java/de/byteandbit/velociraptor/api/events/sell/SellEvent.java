@@ -14,7 +14,13 @@ import java.util.List;
  */
 public abstract class SellEvent extends PlayerEvent {
     protected List<Item> items;
-    protected int payAmount;
+    protected double payAmount;
+
+    public SellEvent(String playerName, String playerUUID, List<Item> items, double payAmount) {
+        super(playerName, playerUUID);
+        this.items = items;
+        this.payAmount = payAmount;
+    }
 
     /**
      * Gibt die verkauften Items zurück, falls
@@ -26,7 +32,7 @@ public abstract class SellEvent extends PlayerEvent {
     /**
      * Gibt den bezahlten Betrag an den Bot zurück.
      */
-    public int getPayAmount() {
+    public double getPayAmount() {
         return payAmount;
     }
 }

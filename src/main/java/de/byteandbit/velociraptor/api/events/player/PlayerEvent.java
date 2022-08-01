@@ -1,10 +1,12 @@
 package de.byteandbit.velociraptor.api.events.player;
 
 import de.byteandbit.velociraptor.api.events.Event;
+import lombok.AllArgsConstructor;
 
 /**
  * Basis für jegliche spielerbezogene Events.
  */
+@AllArgsConstructor
 public abstract class PlayerEvent extends Event {
     protected String playerName;
     protected String playerUUID;
