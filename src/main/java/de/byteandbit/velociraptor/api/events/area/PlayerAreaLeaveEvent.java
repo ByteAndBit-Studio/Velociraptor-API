@@ -5,9 +5,9 @@ import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
 /**
  * Dieses Event wird aufgerufen sobald ein Spieler die Verkaufszone wieder verlässt.
  */
-public class SellAreaLeaveEvent extends PlayerEvent {
+public class PlayerAreaLeaveEvent extends PlayerEvent {
 
-    public SellAreaLeaveEvent(String playerName, String playerUUID) {
+    public PlayerAreaLeaveEvent(String playerName, String playerUUID) {
         super(playerName, playerUUID);
     }
 }
