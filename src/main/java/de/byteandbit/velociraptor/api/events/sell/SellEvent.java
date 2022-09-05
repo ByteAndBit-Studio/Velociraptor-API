@@ -23,7 +23,7 @@ public abstract class SellEvent extends PlayerEvent {
     }
 
     /**
-     * Gibt die verkauften Items zurück, falls
+     * Gibt die verkauften Items zurück, falls diese bereits erkannt wurden.
      */
     public List<Item> getItems() {
         return items;

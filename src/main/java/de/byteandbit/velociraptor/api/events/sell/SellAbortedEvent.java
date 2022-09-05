@@ -9,7 +9,21 @@ import java.util.List;
  */
 public class SellAbortedEvent extends SellEvent {
 
+    private AbortReason reason;
+
     public SellAbortedEvent(String playerName, String playerUUID, List<Item> items, double payAmount) {
         super(playerName, playerUUID, items, payAmount);
+    }
+
+    /**
+     * Gibt den Grund zurück, wieso das Verkaufsevent abgebrochen wurde.
+     */
+    public AbortReason getReason() {
+        return reason;
+    }
+
+    public enum AbortReason {
+        NICKED,
+        NOT_IN_ZONE;
     }
 }
