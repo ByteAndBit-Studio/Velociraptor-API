@@ -7,28 +7,18 @@ import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
  */
 public class MoneyDetectedEvent extends PlayerEvent {
     private boolean cancelled;
-    private boolean outsideZone;
     private double payAmount;
 
-    public MoneyDetectedEvent(String playerName, String playerUUID, boolean outsideZone, double payAmount) {
+    public MoneyDetectedEvent(String playerName, String playerUUID, double payAmount) {
         super(playerName, playerUUID);
-        this.outsideZone = outsideZone;
         this.payAmount = payAmount;
     }
-
 
     /**
      * Gibt den bezahlten Betrag an den Bot zurück.
      */
     public double getPayAmount() {
         return payAmount;
-    }
-
-    /**
-     * Falls dies true zurückgibt, falls die Zahlung von außerhalb der Zone kam.
-     */
-    public boolean wasOutsideZone() {
-        return outsideZone;
     }
 
     /**
