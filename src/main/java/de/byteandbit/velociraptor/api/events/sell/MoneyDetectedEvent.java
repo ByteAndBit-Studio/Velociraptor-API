@@ -7,9 +7,10 @@ import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
  */
 public class MoneyDetectedEvent extends PlayerEvent {
     private boolean cancelled;
+    private boolean payBack;
     private double payAmount;
 
-    public MoneyDetectedEvent(String playerName, String playerUUID, double payAmount) {
+    public MoneyDetectedEvent(String playerName, String playerUUID, double payAmount, boolean payBack) {
         super(playerName, playerUUID);
         this.payAmount = payAmount;
     }
@@ -30,5 +31,17 @@ public class MoneyDetectedEvent extends PlayerEvent {
 
     public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
+    }
+
+    /**
+     * Falls dies true zurückgibt, wird die Zahlung zurückgezahlt bei Abbruch.
+     * Standardmäßig ist dies NICHT der Fall! (also Standardmäßig wird hier false zurückgegeben)
+     */
+    public boolean isPayBack() {
+        return payBack;
+    }
+
+    public void setPayBack(boolean payBack) {
+        this.payBack = payBack;
     }
 }
