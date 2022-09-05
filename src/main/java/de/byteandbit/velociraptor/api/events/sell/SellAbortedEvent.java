@@ -11,8 +11,9 @@ public class SellAbortedEvent extends SellEvent {
 
     private AbortReason reason;
 
-    public SellAbortedEvent(String playerName, String playerUUID, List<Item> items, double payAmount) {
+    public SellAbortedEvent(String playerName, String playerUUID, List<Item> items, double payAmount, AbortReason reason) {
         super(playerName, playerUUID, items, payAmount);
+        this.reason = reason;
     }
 
     /**

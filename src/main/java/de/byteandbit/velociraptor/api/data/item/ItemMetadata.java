@@ -10,7 +10,6 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 public class ItemMetadata {
-    private int flags;
     private String displayName;
     private int repairCost;
     private String signUser;
@@ -18,18 +17,6 @@ public class ItemMetadata {
     private ItemLore[] itemLore;
     private ItemEnchantments[] enchantments;
 
-    /**
-     * Gibt die aktuellen Item Flags zurück.
-     *
-     * @see ItemFlags
-     */
-    public int getFlags() {
-        return flags;
-    }
-
-    public void setFlags(int flags) {
-        this.flags = flags;
-    }
 
     /**
      * Gibt den gesetzten Anzeigenamen des Item Eintrags zurück.
