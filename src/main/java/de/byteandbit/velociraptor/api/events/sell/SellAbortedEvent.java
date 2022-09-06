@@ -25,6 +25,8 @@ public class SellAbortedEvent extends SellEvent {
 
     public enum AbortReason {
         NICKED,
-        NOT_IN_ZONE;
+        NOT_IN_ZONE,
+        API_CANCEL,
+        INVALID_PRICE;
     }
 }
