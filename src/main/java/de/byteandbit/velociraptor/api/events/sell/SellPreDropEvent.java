@@ -10,7 +10,6 @@ import java.util.List;
  */
 public class SellPreDropEvent extends SellEvent {
     private boolean cancelled;
-
     private String cancelReason;
 
     public SellPreDropEvent(String playerName, String playerUUID, List<Item> items, double payAmount) {

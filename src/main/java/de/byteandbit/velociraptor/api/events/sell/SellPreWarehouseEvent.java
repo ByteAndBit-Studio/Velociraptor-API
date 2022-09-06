@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class SellPreWarehouseEvent extends SellEvent {
     private boolean cancelled;
+    private String cancelReason;
 
     public SellPreWarehouseEvent(String playerName, String playerUUID, List<Item> items, double payAmount) {
         super(playerName, playerUUID, items, payAmount);
@@ -24,5 +25,17 @@ public class SellPreWarehouseEvent extends SellEvent {
 
     public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
+    }
+
+    /**
+     * Gibt die Nachricht zurück, die an den Spieler geschickt wird, wenn das Event gecancelled wird.
+     * Falls dies leer ist, wird die Standardnachricht an den Spieler geschickt.
+     */
+    public String getCancelReason() {
+        return cancelReason;
+    }
+
+    public void setCancelReason(String cancelReason) {
+        this.cancelReason = cancelReason;
     }
 }
