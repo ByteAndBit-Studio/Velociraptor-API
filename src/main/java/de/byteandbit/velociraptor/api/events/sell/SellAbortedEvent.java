@@ -5,7 +5,8 @@ import de.byteandbit.velociraptor.api.data.item.Item;
 import java.util.List;
 
 /**
- * Dieses Verkaufsevent wird aufgerufen, wenn der Spieler während des Verkaufs die Zone verlassen hat.
+ * Dieses Verkaufsevent wird aufgerufen, wenn der Verkauf eines Spielers abgebrochen wurde.
+ * Der Grund wird in der AbortReason angegeben.
  */
 public class SellAbortedEvent extends SellEvent {
 
