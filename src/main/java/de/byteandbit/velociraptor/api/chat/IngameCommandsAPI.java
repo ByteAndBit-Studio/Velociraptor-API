@@ -6,4 +6,6 @@ package de.byteandbit.velociraptor.api.chat;
  * Beispiel: /msg Botname sudo p kick AbgegrieftHD
  */
 public interface IngameCommandsAPI {
+
+    void register(IngameCommand command);
 }
