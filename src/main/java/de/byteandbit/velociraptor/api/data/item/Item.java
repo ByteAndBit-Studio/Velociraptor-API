@@ -82,11 +82,11 @@ public class Item {
      * Gibt das Item Material zurück.
      */
     public ItemMaterial getItemMaterial() {
-        return itemMaterial;
+        return material;
     }
 
     public void setItemMaterial(ItemMaterial itemMaterial) {
-        this.itemMaterial = itemMaterial;
+        this.material = itemMaterial;
     }
 
     /**
