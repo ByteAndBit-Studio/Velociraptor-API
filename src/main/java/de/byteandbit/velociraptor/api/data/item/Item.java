@@ -14,7 +14,7 @@ public class Item {
     private boolean active;
 
     private int warehouseCount;
-    private ItemMaterial itemMaterial;
+    private ItemMaterial material;
 
     private int itemFlags;
 
