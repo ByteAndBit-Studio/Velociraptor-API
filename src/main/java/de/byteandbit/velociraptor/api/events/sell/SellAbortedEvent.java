@@ -28,6 +28,7 @@ public class SellAbortedEvent extends SellEvent {
         NICKED,
         NOT_IN_ZONE,
         API_CANCEL,
-        INVALID_PRICE;
+        INVALID_PRICE,
+        NOT_ENOUGH_ITEMS;
     }
 }
