@@ -21,7 +21,7 @@ public class ItemMetadata {
      * Gibt den gesetzten Anzeigenamen des Item Eintrags zurück.
      */
     public String getDisplayName() {
-        return displayName;
+        return displayName != null ? displayName : "";
     }
 
     public void setDisplayName(String displayName) {
@@ -43,7 +43,7 @@ public class ItemMetadata {
      * Gibt den Nutzer, der das Item signiert hat zurück, falls gesetzt.
      */
     public String getSignUser() {
-        return signUser;
+        return signUser != null ? signUser : "";
     }
 
     public void setSignUser(String signUser) {
@@ -54,7 +54,7 @@ public class ItemMetadata {
      * Gibt das Datum, an dem das Item signiert wurde zurück, falls gesetzt.
      */
     public String getSignDate() {
-        return signDate;
+        return signDate != null ? signDate : "";
     }
 
     public void setSignDate(String signDate) {
@@ -65,7 +65,7 @@ public class ItemMetadata {
      * Gibt, falls gesetzt, die ItemLore in einem Array zurück (Zeile für Zeile).
      */
     public ItemLore[] getItemLore() {
-        return itemLore;
+        return itemLore != null ? itemLore : new ItemLore[0];
     }
 
     public void setItemLore(ItemLore[] itemLore) {
@@ -76,7 +76,7 @@ public class ItemMetadata {
      * Gibt, falls gesetzt, die Item Verzauberungen zurück.
      */
     public ItemEnchantments[] getEnchantments() {
-        return enchantments;
+        return enchantments != null ? enchantments : new ItemEnchantments[0];
     }
 
     public void setEnchantments(ItemEnchantments[] enchantments) {
@@ -100,7 +100,7 @@ public class ItemMetadata {
         }
 
         public String getLine() {
-            return lineContent;
+            return lineContent != null ? lineContent : "";
         }
 
         public void setLine(String line) {

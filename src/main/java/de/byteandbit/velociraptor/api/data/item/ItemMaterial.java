@@ -20,7 +20,7 @@ public class ItemMaterial {
      * Gibt den Namen des Materials zurück, zum Beispiel minecraft:stone.
      */
     public String getName() {
-        return name;
+        return name != null ? name : "";
     }
 
     public void setName(String name) {

@@ -110,7 +110,7 @@ public class Item {
      * @see ItemPrice
      */
     public ItemPrice[] getPrices() {
-        return prices;
+        return prices != null ? prices : new ItemPrice[0];
     }
 
     public void setPrices(ItemPrice[] prices) {
