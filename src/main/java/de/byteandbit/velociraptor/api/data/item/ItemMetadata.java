@@ -89,7 +89,7 @@ public class ItemMetadata {
     @ToString
     public static class ItemLore {
         private int lineNumber;
-        private String line;
+        private String lineContent;
 
         public int getLineNumber() {
             return lineNumber;
@@ -100,11 +100,11 @@ public class ItemMetadata {
         }
 
         public String getLine() {
-            return line;
+            return lineContent;
         }
 
         public void setLine(String line) {
-            this.line = line;
+            this.lineContent = line;
         }
     }
 

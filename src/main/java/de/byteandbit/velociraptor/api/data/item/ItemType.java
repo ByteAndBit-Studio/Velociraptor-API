@@ -9,5 +9,5 @@ public enum ItemType {
     /**
      * Ankauf
      */
-    PURCHASE;
+    BUY;
 }
