@@ -3,12 +3,14 @@ package de.byteandbit.velociraptor.api.data.item;
 import com.google.common.base.Objects;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * Datenstruktur für das Item Material im Bot
  */
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class ItemMaterial {
     private String name;
     private int subId;

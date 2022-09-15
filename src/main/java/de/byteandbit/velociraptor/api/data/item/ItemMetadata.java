@@ -17,7 +17,6 @@ public class ItemMetadata {
     private ItemLore[] itemLore;
     private ItemEnchantments[] enchantments;
 
-
     /**
      * Gibt den gesetzten Anzeigenamen des Item Eintrags zurück.
      */

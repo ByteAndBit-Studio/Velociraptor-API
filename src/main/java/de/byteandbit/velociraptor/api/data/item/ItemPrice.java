@@ -1,10 +1,12 @@
 package de.byteandbit.velociraptor.api.data.item;
 
 import com.google.common.base.Objects;
+import lombok.ToString;
 
 /**
  * Datenstruktur für einen Itempreis
  */
+@ToString
 public class ItemPrice {
     private double price;
     private int amount;

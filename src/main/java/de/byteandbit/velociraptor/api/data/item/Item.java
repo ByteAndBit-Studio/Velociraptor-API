@@ -2,12 +2,14 @@ package de.byteandbit.velociraptor.api.data.item;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * Datenstruktur für einen Item-Eintrag im Bot.
  */
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Item {
     private String _id;
     private String nickname;
