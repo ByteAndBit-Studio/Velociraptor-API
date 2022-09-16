@@ -30,6 +30,8 @@ public class SellAbortedEvent extends SellEvent {
         API_CANCEL,
         INVALID_PRICE,
         NOT_ENOUGH_ITEMS,
-        INVENTORY_ERROR;
+        INVENTORY_ERROR,
+        INTERNAL_ERROR,
+        PLAYER_LEFT_ZONE;
     }
 }
