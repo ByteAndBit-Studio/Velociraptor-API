@@ -2,7 +2,6 @@ package de.byteandbit.velociraptor.api;
 
 import de.byteandbit.velociraptor.api.chat.ChatAPI;
 import de.byteandbit.velociraptor.api.chat.IngameCommandsAPI;
-import de.byteandbit.velociraptor.api.chat.IngamePermissionsAPI;
 import de.byteandbit.velociraptor.api.pipeline.PipelineAPI;
 import de.byteandbit.velociraptor.api.stats.StatsAPI;
 import org.slf4j.Logger;
@@ -18,8 +17,6 @@ public interface VelociraptorImpl {
     ChatAPI getChatImpl();
 
     IngameCommandsAPI getCommandsImpl();
-
-    IngamePermissionsAPI getPermissionImpl();
 
     Logger getLogger();
 }

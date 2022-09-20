@@ -29,6 +29,7 @@ public class ChatMessage {
         return new ChatMessage(Type.COMMAND);
     }
 
+
     /**
      * Erstellt eine ChatMessage, die in den normalen Chat geschickt wird.
      */
@@ -61,6 +62,23 @@ public class ChatMessage {
         }
 
         this.message = String.format(message, arguments);
+        return this;
+    }
+
+    /**
+     * Verschickt eine private Nachricht.
+     *
+     * @param message   Nachricht, die geschickt werden soll
+     * @param arguments Argumente zu dieser Nachricht (siehe Beispiele)
+     * @example <p>message.privateMessage("Shisha_Aole", "Hallo Welt")</p>
+     * @example <p>message.privateMessage("Shisha_Aole", "Hallo %s", "Niemand")</p>
+     */
+    public ChatMessage privateMessage(String player, String message, Object... arguments) {
+        if (this.type != Type.COMMAND) {
+            throw new UnsupportedOperationException("Du musst als MessageType COMMAND setzen um eine private Nachricht zu verschicken!");
+        }
+
+        this.message = String.format("msg %s %s", player, String.format(message, arguments));
         return this;
     }
 
