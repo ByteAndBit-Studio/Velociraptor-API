@@ -1,18 +1,15 @@
 package de.byteandbit.velociraptor.api.events.purchase;
 
-import de.byteandbit.velociraptor.api.data.item.Item;
-
-import java.util.List;
+import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
 
 /**
- * Dieses Ankaufevent wird kurz vorher aufgerufen, bevor der Bot die Ankaufsitems ins Lager legt.
- * Du kannst den Ankauf beenden, indem du die cancelled Variable auf true setzt.
+ * Dieses Ankaufevent wird aufgerufen, nachdem ein Ankaufbefehl über API/via private Nachricht erkannt wurde.
  */
-public class PurchaseDetectedEvent extends PurchaseEvent {
+public class PurchaseDetectedEvent extends PlayerEvent {
     private boolean cancelled;
 
-    public PurchaseDetectedEvent(String playerName, String playerUUID, List<Item> items, List<Item> acceptedItems, double payAmount) {
-        super(playerName, playerUUID, items, acceptedItems, payAmount);
+    public PurchaseDetectedEvent(String playerName, String playerUUID) {
+        super(playerName, playerUUID);
     }
 
     /**
