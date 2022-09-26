@@ -8,8 +8,10 @@ import java.util.List;
 /**
  * Basis für die Ankaufsevents
  *
- * @see PurchasePostWarehouseEvent
- * @see PurchasePreWarehouseEvent
+ * @see PurchasePrePayEvent
+ * @see PurchaseDetectedEvent
+ * @see PurchaseAbortedEvent
+ * @see AfterPurchaseEvent
  */
 public abstract class PurchaseEvent extends PlayerEvent {
     protected List<Item> items;

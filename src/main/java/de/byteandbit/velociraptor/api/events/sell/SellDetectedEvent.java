@@ -8,11 +8,11 @@ import java.util.List;
  * Dieses Verkaufsevent wird aufgerufen, bevor der Bot die Items aus dem Lager holt.
  * Du kannst den Verkauf beenden, indem du die cancelled Variable auf true setzt.
  */
-public class SellPreWarehouseEvent extends SellEvent {
+public class SellDetectedEvent extends SellEvent {
     private boolean cancelled;
     private String cancelReason;
 
-    public SellPreWarehouseEvent(String playerName, String playerUUID, List<Item> items, double payAmount) {
+    public SellDetectedEvent(String playerName, String playerUUID, List<Item> items, double payAmount) {
         super(playerName, playerUUID, items, payAmount);
     }
 
