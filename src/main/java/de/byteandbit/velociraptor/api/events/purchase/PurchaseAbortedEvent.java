@@ -11,7 +11,7 @@ import java.util.List;
 public class PurchaseAbortedEvent extends PurchaseEvent {
     private AbortReason reason;
 
-    public PurchaseAbortedEvent(String playerName, String playerUUID, List<Item> items, List<Item> acceptedItems, double payAmount) {
+    public PurchaseAbortedEvent(String playerName, String playerUUID, List<Item> items, List<Item> acceptedItems, double payAmount, AbortReason reason) {
         super(playerName, playerUUID, items, acceptedItems, payAmount);
         this.reason = reason;
     }
