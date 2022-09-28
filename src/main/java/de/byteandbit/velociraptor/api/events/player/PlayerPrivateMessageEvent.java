@@ -8,6 +8,7 @@ public class PlayerPrivateMessageEvent extends PlayerEvent {
 
     public PlayerPrivateMessageEvent(String playerName, String playerUUID, String message) {
         super(playerName, playerUUID);
+        this.message = message;
     }
 
     /**
