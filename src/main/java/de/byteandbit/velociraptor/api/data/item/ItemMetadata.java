@@ -15,7 +15,7 @@ public class ItemMetadata {
     private String signUser;
     private String signDate;
     private ItemLore[] itemLore;
-    private ItemEnchantments[] enchantments;
+    private ItemEnchantments[] itemEnchantments;
 
     /**
      * Gibt den gesetzten Anzeigenamen des Item Eintrags zurück.
