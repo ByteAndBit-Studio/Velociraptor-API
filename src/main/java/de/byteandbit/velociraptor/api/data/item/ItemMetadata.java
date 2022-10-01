@@ -76,7 +76,7 @@ public class ItemMetadata {
      * Gibt, falls gesetzt, die Item Verzauberungen zurück.
      */
     public ItemEnchantments[] getEnchantments() {
-        return enchantments != null ? enchantments : new ItemEnchantments[0];
+        return this.itemEnchantments != null ? this.itemEnchantments : new ItemEnchantments[0];
     }
 
     public void setEnchantments(ItemEnchantments[] enchantments) {
