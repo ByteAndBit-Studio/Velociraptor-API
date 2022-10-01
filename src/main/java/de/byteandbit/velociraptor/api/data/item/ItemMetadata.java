@@ -80,7 +80,7 @@ public class ItemMetadata {
     }
 
     public void setEnchantments(ItemEnchantments[] enchantments) {
-        this.enchantments = enchantments;
+        this.itemEnchantments = enchantments;
     }
 
     @AllArgsConstructor
