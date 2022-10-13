@@ -13,6 +13,7 @@ public class MoneyDetectedEvent extends PlayerEvent {
     public MoneyDetectedEvent(String playerName, String playerUUID, double payAmount, boolean payBack) {
         super(playerName, playerUUID);
         this.payAmount = payAmount;
+        this.payBack = payBack;
     }
 
     /**

@@ -2,7 +2,7 @@ package de.byteandbit.velociraptor.api.events.sell;
 
 import de.byteandbit.velociraptor.api.data.item.Item;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * Dieses Verkaufsevent wird kurz bevor der Bot die Items aus dem Lager holt.
@@ -12,7 +12,7 @@ public class SellPreDropEvent extends SellEvent {
     private boolean cancelled;
     private String cancelReason;
 
-    public SellPreDropEvent(String playerName, String playerUUID, List<Item> items, double payAmount) {
+    public SellPreDropEvent(String playerName, String playerUUID, Map<Item, Integer> items, double payAmount) {
         super(playerName, playerUUID, items, payAmount);
     }
 

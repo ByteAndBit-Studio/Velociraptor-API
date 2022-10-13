@@ -3,7 +3,8 @@ package de.byteandbit.velociraptor.api.events.sell;
 import de.byteandbit.velociraptor.api.data.item.Item;
 import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
 
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Basis für die Verkaufsevents.
@@ -13,10 +14,10 @@ import java.util.List;
  * @see SellAbortedEvent
  */
 public abstract class SellEvent extends PlayerEvent {
-    protected List<Item> items;
+    protected Map<Item, Integer> items;
     protected double payAmount;
 
-    public SellEvent(String playerName, String playerUUID, List<Item> items, double payAmount) {
+    public SellEvent(String playerName, String playerUUID, Map<Item, Integer> items, double payAmount) {
         super(playerName, playerUUID);
         this.items = items;
         this.payAmount = payAmount;
@@ -25,8 +26,15 @@ public abstract class SellEvent extends PlayerEvent {
     /**
      * Gibt die verkauften Items zurück, falls diese bereits erkannt wurden.
      */
-    public List<Item> getItems() {
-        return items;
+    public Set<Item> getItems() {
+        return items.keySet();
+    }
+
+    /**
+     * Gibt die Anzahl zurück, wie oft ein Item gedroppt / verkauft wurde.
+     */
+    public int getAmountOf(Item item) {
+        return items.getOrDefault(item, 0);
     }
 
     /**

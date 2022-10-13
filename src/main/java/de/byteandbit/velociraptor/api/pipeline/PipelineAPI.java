@@ -5,7 +5,6 @@ package de.byteandbit.velociraptor.api.pipeline;
  * Das ist zum Beispiel das Öffnen von Kisten.
  */
 public interface PipelineAPI {
-
     /**
      * Gibt den aktuellen Zustand der Pipeline zurück.
      */

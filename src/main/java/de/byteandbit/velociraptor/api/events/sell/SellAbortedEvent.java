@@ -2,7 +2,7 @@ package de.byteandbit.velociraptor.api.events.sell;
 
 import de.byteandbit.velociraptor.api.data.item.Item;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * Dieses Verkaufsevent wird aufgerufen, wenn der Verkauf eines Spielers abgebrochen wurde.
@@ -12,7 +12,7 @@ public class SellAbortedEvent extends SellEvent {
 
     private AbortReason reason;
 
-    public SellAbortedEvent(String playerName, String playerUUID, List<Item> items, double payAmount, AbortReason reason) {
+    public SellAbortedEvent(String playerName, String playerUUID, Map<Item, Integer> items, double payAmount, AbortReason reason) {
         super(playerName, playerUUID, items, payAmount);
         this.reason = reason;
     }

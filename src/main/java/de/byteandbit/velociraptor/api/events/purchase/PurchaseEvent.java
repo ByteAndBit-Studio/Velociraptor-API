@@ -3,7 +3,8 @@ package de.byteandbit.velociraptor.api.events.purchase;
 import de.byteandbit.velociraptor.api.data.item.Item;
 import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
 
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Basis für die Ankaufsevents
@@ -14,11 +15,11 @@ import java.util.List;
  * @see AfterPurchaseEvent
  */
 public abstract class PurchaseEvent extends PlayerEvent {
-    protected List<Item> items;
-    protected List<Item> acceptedItems;
+    protected Set<Item> items;
+    protected Map<Item, Integer> acceptedItems;
     protected double payAmount;
 
-    public PurchaseEvent(String playerName, String playerUUID, List<Item> items, List<Item> acceptedItems, double payAmount) {
+    public PurchaseEvent(String playerName, String playerUUID, Set<Item> items, Map<Item, Integer> acceptedItems, double payAmount) {
         super(playerName, playerUUID);
         this.items = items;
         this.acceptedItems = acceptedItems;
@@ -28,15 +29,27 @@ public abstract class PurchaseEvent extends PlayerEvent {
     /**
      * Gibt die Items zurück, die der Spieler eingelegt hat.
      */
-    public List<Item> getItems() {
+    public Set<Item> getItems() {
         return items;
     }
 
     /**
      * Gibt die akzeptierten Items zurück.
      */
-    public List<Item> getAcceptedItems() {
-        return acceptedItems;
+    public Set<Item> getAcceptedItems() {
+        return acceptedItems.keySet();
+    }
+
+    public int getAmountOf(Item item) {
+        if (acceptedItems != null && acceptedItems.containsKey(item)) {
+            return acceptedItems.get(item);
+        }
+
+        if (items != null && items.contains(item)) {
+            return item.getWarehouseCount();
+        }
+
+        return 0;
     }
 
     /**

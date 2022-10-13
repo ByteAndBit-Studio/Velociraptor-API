@@ -2,7 +2,8 @@ package de.byteandbit.velociraptor.api.events.purchase;
 
 import de.byteandbit.velociraptor.api.data.item.Item;
 
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Dieses Ankaufsevent wird aufgerufen, wenn der Ankauf eines Spielers abgebrochen wurde.
@@ -11,7 +12,7 @@ import java.util.List;
 public class PurchaseAbortedEvent extends PurchaseEvent {
     private AbortReason reason;
 
-    public PurchaseAbortedEvent(String playerName, String playerUUID, List<Item> items, List<Item> acceptedItems, double payAmount, AbortReason reason) {
+    public PurchaseAbortedEvent(String playerName, String playerUUID, Set<Item> items, Map<Item, Integer> acceptedItems, double payAmount, AbortReason reason) {
         super(playerName, playerUUID, items, acceptedItems, payAmount);
         this.reason = reason;
     }
