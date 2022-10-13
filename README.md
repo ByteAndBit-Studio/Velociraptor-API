@@ -1,10 +1,19 @@
 ## Velociraptor API
 
-In diesem Repository liegt die API des neuen [Velociraptor NG](https://byteandbit.store/category/velociraptor) vom
+In diesem Repository liegt die API des neuen [Velociraptor NG](https://byteandbit.store/shop/category/velociraptor) vom
 ByteAndBit Studio.
 
 **Bitte beachte: Die API ist aktuell noch in der Betaphase. Bei Problemen oder Fragen melde dich bitte bei uns
 im [Discord](https://discord.com/invite/tSvGXeN).**
+
+### Nutzungshinweis und Lizenz
+
+Die Nutzung der API erfolgt auf eigene Gefahr!
+Wir haften nicht für Probleme, Fehler oder sonstige Aktionen, die im Zusammenhang mit der Nutzung der API auftreten.
+
+Solltest du nicht wissen, was du tust, benutze bitte nicht die API!
+
+Die API ist unter der [MIT Lizenz](https://github.com/ByteAndBit-Studio/Velociraptor-API/blob/master/LICENSE) veröffentlicht.
 
 ### Dokumentation
 
