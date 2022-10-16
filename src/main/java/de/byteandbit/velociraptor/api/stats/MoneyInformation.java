@@ -1,6 +1,7 @@
 package de.byteandbit.velociraptor.api.stats;
 
 import lombok.AllArgsConstructor;
+import lombok.ToString;
 
 import java.util.Date;
 
@@ -8,6 +9,7 @@ import java.util.Date;
  * Repräsentiert die aktuellen Geldinformationen des Bots.
  */
 @AllArgsConstructor
+@ToString
 public class MoneyInformation {
     private double balance;
     private double bankBalance;
