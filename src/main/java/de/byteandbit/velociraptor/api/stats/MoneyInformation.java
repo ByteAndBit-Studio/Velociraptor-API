@@ -1,15 +1,14 @@
 package de.byteandbit.velociraptor.api.stats;
 
 import lombok.AllArgsConstructor;
-import lombok.ToString;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Repräsentiert die aktuellen Geldinformationen des Bots.
  */
 @AllArgsConstructor
-@ToString
 public class MoneyInformation {
     private double balance;
     private double bankBalance;
@@ -40,5 +39,15 @@ public class MoneyInformation {
      */
     public Date getLastUpdated() {
         return lastUpdated;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        return "MoneyInformation{" +
+                "balance=" + String.format("%.2f", balance) +
+                ", bankBalance=" + String.format("%.2f", bankBalance) +
+                ", lastUpdated=" + dateFormat.format(lastUpdated) +
+                '}';
     }
 }
