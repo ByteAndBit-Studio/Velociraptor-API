@@ -31,7 +31,7 @@ hast.
 
 ```
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
 }
 ```
 
