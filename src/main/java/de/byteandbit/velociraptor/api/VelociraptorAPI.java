@@ -3,6 +3,7 @@ package de.byteandbit.velociraptor.api;
 import de.byteandbit.velociraptor.api.chat.ChatAPI;
 import de.byteandbit.velociraptor.api.chat.IngameCommandsAPI;
 import de.byteandbit.velociraptor.api.events.EventBus;
+import de.byteandbit.velociraptor.api.payment.PaymentAPI;
 import de.byteandbit.velociraptor.api.pipeline.PipelineAPI;
 import de.byteandbit.velociraptor.api.stats.StatsAPI;
 import org.slf4j.Logger;
@@ -32,6 +33,7 @@ public class VelociraptorAPI {
     private ChatAPI chatApi;
     private PipelineAPI pipelineApi;
     private IngameCommandsAPI ingameCommandsAPI;
+    private PaymentAPI paymentAPI;
 
     public VelociraptorAPI() {
         try {
@@ -43,6 +45,7 @@ public class VelociraptorAPI {
             this.pipelineApi = impl.getPipelineImpl();
             this.chatApi = impl.getChatImpl();
             this.ingameCommandsAPI = impl.getCommandsImpl();
+            this.paymentAPI = impl.getPaymentImpl();
 
             this.EVENT_BUS = new EventBus(logger);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
@@ -76,6 +79,13 @@ public class VelociraptorAPI {
      */
     public IngameCommandsAPI getIngameCommandsAPI() {
         return this.ingameCommandsAPI;
+    }
+
+    /**
+     * Gibt die Payment API zurück.
+     */
+    public PaymentAPI getPaymentAPI() {
+        return this.paymentAPI;
     }
 
     /**
