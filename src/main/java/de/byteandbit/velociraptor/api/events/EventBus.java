@@ -80,7 +80,7 @@ public class EventBus {
                     continue;
                 }
                 Class<?> parameterType = m.getParameterTypes()[0];
-                if (parameterType.getCanonicalName().equals(event.getClass().getCanonicalName())) continue;
+                if (!parameterType.getCanonicalName().equals(event.getClass().getCanonicalName())) continue;
 
                 try {
                     m.invoke(listener, event);
