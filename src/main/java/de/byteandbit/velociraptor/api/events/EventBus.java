@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
  */
 public class EventBus {
 
-    private Multimap<Class<?>, Object> eventListeners;
+    private Multimap<String, Object> eventListeners;
     private final Logger logger;
 
     public EventBus(Logger logger) {
@@ -41,10 +41,10 @@ public class EventBus {
             if (m.getParameterCount() != 1) {
                 continue;
             }
-            logger.info(String.format("EventBus registriert folgende Methode %s#%s", o.getClass().getName(), m.getName()));
-
             Class<?> parameterType = m.getParameterTypes()[0];
-            eventListeners.put(parameterType, o);
+
+            logger.info(String.format("EventBus registriert folgende Methode %s#%s(%s)", o.getClass().getName(), m.getName(), parameterType.getCanonicalName()));
+            eventListeners.put(parameterType.getCanonicalName(), o);
         }
     }
 
@@ -61,7 +61,7 @@ public class EventBus {
                 continue;
             }
             Class<?> parameterType = m.getParameterTypes()[0];
-            eventListeners.remove(parameterType, o);
+            eventListeners.remove(parameterType.getCanonicalName(), o);
         }
     }
 
@@ -69,10 +69,9 @@ public class EventBus {
      * Wirft ein Event an alle registrierten Klassen im EventBus.
      */
     public <T> T post(T event) {
-        if (!event.getClass().getName().contains("PacketReceiveEvent"))
-            logger.info("EventBus#post(" + event.getClass().getName() + ")");
+        logger.info("EventBus#post(" + event.getClass().getName() + ")");
 
-        for (Object listener : eventListeners.get(event.getClass())) {
+        for (Object listener : eventListeners.get(event.getClass().getCanonicalName())) {
             for (Method m : listener.getClass().getMethods()) {
                 if (!m.isAnnotationPresent(EventHandler.class)) {
                     continue;
@@ -81,7 +80,7 @@ public class EventBus {
                     continue;
                 }
                 Class<?> parameterType = m.getParameterTypes()[0];
-                if (parameterType != event.getClass()) continue;
+                if (parameterType.getCanonicalName().equals(event.getClass().getCanonicalName())) continue;
 
                 try {
                     m.invoke(listener, event);
