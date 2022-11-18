@@ -1,0 +1,12 @@
+de.byteandbit.velociraptor.api
+de.byteandbit.velociraptor.api.area
+de.byteandbit.velociraptor.api.chat
+de.byteandbit.velociraptor.api.data.item
+de.byteandbit.velociraptor.api.events
+de.byteandbit.velociraptor.api.events.area
+de.byteandbit.velociraptor.api.events.player
+de.byteandbit.velociraptor.api.events.purchase
+de.byteandbit.velociraptor.api.events.sell
+de.byteandbit.velociraptor.api.payment
+de.byteandbit.velociraptor.api.pipeline
+de.byteandbit.velociraptor.api.stats
