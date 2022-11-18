@@ -65,8 +65,8 @@ spec:
         stage('Release Velociraptor API') {
             steps {
               container('homebrew') {
-                  withCredentials([string(credentialsId: 'byteandbit-git', variable: 'GH_TOKEN')]) {
-                      sh "git clone https://$GH_TOKEN@github.com/ByteAndBit-Studio/Velociraptor-API.git temp-docs"
+                  withCredentials([string(credentialsId: 'git-token', variable: 'GH_TOKEN')]) {
+                      sh 'git clone https://$GH_TOKEN@github.com/ByteAndBit-Studio/Velociraptor-API.git temp-docs'
                       dir("temp-docs") {
                           sh 'git fetch origin'
                           sh 'git switch -c gh-pages origin/gh-pages'
