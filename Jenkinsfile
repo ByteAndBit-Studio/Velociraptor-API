@@ -65,20 +65,20 @@ spec:
         stage('Release Velociraptor API') {
             steps {
               container('homebrew') {
-                  sh 'git clone https://github.com/ByteAndBit-Studio/Velociraptor-API.git temp-docs'
-                  dir("temp-docs") {
-                      sh 'git fetch origin'
-                      sh 'git switch -c gh-pages origin/gh-pages'
-                      sh 'git rm -rf .'
-                      sh 'cp -r /shared/docs/* .'
-                      sh 'git add -A'
-                      sh "git config --global user.email 'no-reply@byteandbit.studio'"
-                      sh "git config --global user.name 'Jenkins'"
-                      sh "git commit -m 'update javadocs'"
-                      sh 'git push'
-                  }
-                  sh 'brew install gh'
                   withCredentials([string(credentialsId: 'git-token', variable: 'GH_TOKEN')]) {
+                      sh "git clone https://$GH_TOKEN@github.com/ByteAndBit-Studio/Velociraptor-API.git temp-docs"
+                      dir("temp-docs") {
+                          sh 'git fetch origin'
+                          sh 'git switch -c gh-pages origin/gh-pages'
+                          sh 'git rm -rf .'
+                          sh 'cp -r /shared/docs/* .'
+                          sh 'git add -A'
+                          sh "git config --global user.email 'no-reply@byteandbit.studio'"
+                          sh "git config --global user.name 'Jenkins'"
+                          sh "git commit -m 'update javadocs'"
+                          sh 'git push'
+                      }
+                      sh 'brew install gh'
                       sh 'gh release create b$BUILD_NUMBER --title \'Build #' + env.BUILD_NUMBER + '\' /shared/*.jar'
                   }
               }
