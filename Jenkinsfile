@@ -72,6 +72,8 @@ spec:
                       sh 'git rm -rf .'
                       sh 'cp -r /shared/docs/* .'
                       sh 'git add -A'
+                      sh "git config --global user.email 'no-reply@byteandbit.studio'"
+                      sh "git config --global user.name 'Jenkins'"
                       sh "git commit -m 'update javadocs'"
                       sh 'git push'
                   }
