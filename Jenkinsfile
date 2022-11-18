@@ -66,13 +66,15 @@ spec:
             steps {
               container('homebrew') {
                   sh 'git clone https://github.com/ByteAndBit-Studio/Velociraptor-API.git temp-docs'
-                  sh 'cd temp-docs'
-                  sh 'git switch -c gh-pages origin/gh-pages'
-                  sh 'git rm -rf .'
-                  sh 'cp -r /shared/docs/* .'
-                  sh 'git add -A'
-                  sh "git commit -m 'update javadocs'"
-                  sh 'git push'
+                  dir("temp-docs") {
+                      sh 'git fetch origin'
+                      sh 'git switch -c gh-pages origin/gh-pages'
+                      sh 'git rm -rf .'
+                      sh 'cp -r /shared/docs/* .'
+                      sh 'git add -A'
+                      sh "git commit -m 'update javadocs'"
+                      sh 'git push'
+                  }
                   sh 'brew install gh'
                   withCredentials([string(credentialsId: 'git-token', variable: 'GH_TOKEN')]) {
                       sh 'gh release create b$BUILD_NUMBER --title \'Build #' + env.BUILD_NUMBER + '\' /shared/*.jar'
