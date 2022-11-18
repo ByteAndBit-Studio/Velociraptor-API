@@ -17,7 +17,10 @@ Die API ist unter der [MIT Lizenz](https://github.com/ByteAndBit-Studio/Velocira
 
 ### Dokumentation
 
-Jede Klasse ist ausführlich mit Javadoc beschrieben. Solltest du Probleme oder zusätzliche Fragen zur Benutzung haben
+Jede Klasse ist ausführlich mit JavaDoc beschrieben. 
+Die JavaDoc findest du [hier](https://byteandbit-studio.github.io/Velociraptor-API/).
+
+Solltest du Probleme oder zusätzliche Fragen zur Benutzung haben
 kannst du dich bei uns im [Discord](https://discord.com/invite/tSvGXeN) melden!
 
 ### Einbindung der API
