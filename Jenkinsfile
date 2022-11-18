@@ -67,7 +67,7 @@ spec:
               container('homebrew') {
                   sh 'git clone https://github.com/ByteAndBit-Studio/Velociraptor-API.git temp-docs'
                   sh 'cd temp-docs'
-                  sh 'git switch gh-pages'
+                  sh 'git switch -c gh-pages origin/gh-pages'
                   sh 'git rm -rf .'
                   sh 'cp -r /shared/docs/* .'
                   sh 'git add -A'
