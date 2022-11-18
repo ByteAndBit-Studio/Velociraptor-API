@@ -71,7 +71,7 @@ spec:
                           sh 'git fetch origin'
                           sh 'git switch -c gh-pages origin/gh-pages'
                           sh 'git rm -rf .'
-                          sh 'cp -r /shared/docs/* .'
+                          sh 'cp -r /shared/docs/apidocs/* .'
                           sh 'git add -A'
                           sh "git config --global user.email 'no-reply@byteandbit.studio'"
                           sh "git config --global user.name 'Jenkins'"
