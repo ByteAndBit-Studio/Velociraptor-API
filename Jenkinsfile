@@ -51,21 +51,30 @@ spec:
                 withCredentials([string(credentialsId: 'maven-password', variable: 'MAVEN_PASSWORD')]) {
                   sh('sed -i \'s/123name/\'"$MAVEN_USERNAME"\'/g\' settings.xml')
                   sh('sed -i \'s/123password/\'"$MAVEN_PASSWORD"\'/g\' settings.xml')
-                  sh('mvn -s settings.xml clean package deploy')
+                  sh('mvn -s settings.xml clean package javadoc deploy')
                   sh 'cp target/velociraptor-api-b$BUILD_NUMBER.jar /shared/Velociraptor-API-b$BUILD_NUMBER.jar'
+                  sh 'cp -r target/site /shared/docs'
                 }
               }
             }
+          }
+          when {
+            branch 'master'
           }
         }
         stage('Release Velociraptor API') {
             steps {
               container('homebrew') {
+                  sh 'git clone https://github.com/ByteAndBit-Studio/Velociraptor-API.git temp-docs'
+                  sh ''
                   sh 'brew install gh'
                   withCredentials([string(credentialsId: 'git-token', variable: 'GH_TOKEN')]) {
                       sh 'gh release create b$BUILD_NUMBER --title \'Build #' + env.BUILD_NUMBER + '\' /shared/*.jar'
                   }
               }
+            }
+            when {
+                branch 'master'
             }
          }
     }

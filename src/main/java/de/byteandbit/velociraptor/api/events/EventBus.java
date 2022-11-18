@@ -85,6 +85,7 @@ public class EventBus {
                 try {
                     m.invoke(listener, event);
                 } catch (Exception e) {
+                    e.printStackTrace();
                     logger.error("Der EventBus hat einen Fehler geworfen", e);
                 }
             }
