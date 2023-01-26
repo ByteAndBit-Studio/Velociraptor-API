@@ -16,7 +16,7 @@ public interface StatsAPI {
     /**
      * Fügt eine Itemstatistik hinzu.
      */
-    void addItemStat(StatType type, double money, Item item, double amount);
+    void addItemStat(StatType type, double money, Item item, int amount);
 
     /**
      * Fügt eine Spielerstatistik hinzu.
