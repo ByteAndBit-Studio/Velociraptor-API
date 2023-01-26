@@ -1,10 +1,13 @@
 package de.byteandbit.velociraptor.api.events;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
 import org.slf4j.Logger;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * Der EventBus ist eines der wichtigsten Features der API.
@@ -20,18 +23,22 @@ import java.lang.reflect.Method;
  */
 public class EventBus {
 
-    private Multimap<String, Object> eventListeners;
+    private ReentrantReadWriteLock lock;
+    private Map<String, List<Object>> eventListeners;
     private final Logger logger;
 
     public EventBus(Logger logger) {
         this.logger = logger;
-        eventListeners = ArrayListMultimap.create();
+        lock = new ReentrantReadWriteLock();
+        eventListeners = new ConcurrentHashMap<>();
     }
 
     /**
      * Registriert eine Klasse im EventBus.
      */
     public void register(Object o) {
+        lock.writeLock().lock();
+
         logger.info("EventBus#register(" + o.getClass().getName() + ")");
 
         for (Method m : o.getClass().getMethods()) {
@@ -44,14 +51,21 @@ public class EventBus {
             Class<?> parameterType = m.getParameterTypes()[0];
 
             logger.info(String.format("EventBus registriert folgende Methode %s#%s(%s)", o.getClass().getName(), m.getName(), parameterType.getCanonicalName()));
-            eventListeners.put(parameterType.getCanonicalName(), o);
+            List<Object> listeners = eventListeners.getOrDefault(parameterType.getCanonicalName(), new ArrayList<>());
+            listeners.add(o);
+
+            eventListeners.put(parameterType.getCanonicalName(), listeners);
         }
+
+        lock.writeLock().unlock();
     }
 
     /**
      * Unregistriert eine Klasse vom EventBus.
      */
     public void unregister(Object o) {
+        lock.writeLock().lock();
+
         logger.info("EventBus#unregister(" + o.getClass().getName() + ")");
         for (Method m : o.getClass().getMethods()) {
             if (!m.isAnnotationPresent(EventHandler.class)) {
@@ -61,14 +75,21 @@ public class EventBus {
                 continue;
             }
             Class<?> parameterType = m.getParameterTypes()[0];
-            eventListeners.remove(parameterType.getCanonicalName(), o);
+            List<Object> listeners = eventListeners.getOrDefault(parameterType.getCanonicalName(), new ArrayList<>());
+            listeners.remove(o);
+
+            eventListeners.put(parameterType.getCanonicalName(), listeners);
         }
+
+        lock.writeLock().unlock();
     }
 
     /**
      * Wirft ein Event an alle registrierten Klassen im EventBus.
      */
     public <T> T post(T event) {
+        lock.readLock().lock();
+
         logger.info("EventBus#post(" + event.getClass().getName() + ")");
 
         for (Object listener : eventListeners.get(event.getClass().getCanonicalName())) {
@@ -90,6 +111,9 @@ public class EventBus {
                 }
             }
         }
+
+        lock.readLock().unlock();
+
         return event;
     }
 }

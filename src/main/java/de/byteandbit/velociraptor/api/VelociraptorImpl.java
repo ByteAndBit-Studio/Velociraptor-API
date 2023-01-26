@@ -1,5 +1,6 @@
 package de.byteandbit.velociraptor.api;
 
+import de.byteandbit.velociraptor.api.area.AreaAPI;
 import de.byteandbit.velociraptor.api.chat.ChatAPI;
 import de.byteandbit.velociraptor.api.chat.IngameCommandsAPI;
 import de.byteandbit.velociraptor.api.payment.PaymentAPI;
@@ -20,6 +21,8 @@ public interface VelociraptorImpl {
     IngameCommandsAPI getCommandsImpl();
 
     PaymentAPI getPaymentImpl();
+
+    AreaAPI getAreaImpl();
 
     Logger getLogger();
 }
