@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -90,7 +91,7 @@ public class EventBus {
     public <T> T post(T event) {
         logger.info("EventBus#post(" + event.getClass().getName() + ")");
 
-        for (Object listener : eventListeners.get(event.getClass().getCanonicalName())) {
+        for (Object listener : eventListeners.getOrDefault(event.getClass().getCanonicalName(), Collections.emptyList())) {
             for (Method m : listener.getClass().getMethods()) {
                 if (!m.isAnnotationPresent(EventHandler.class)) {
                     continue;
