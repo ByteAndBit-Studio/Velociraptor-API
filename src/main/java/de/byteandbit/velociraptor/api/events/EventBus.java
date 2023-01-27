@@ -88,8 +88,6 @@ public class EventBus {
      * Wirft ein Event an alle registrierten Klassen im EventBus.
      */
     public <T> T post(T event) {
-        lock.readLock().lock();
-
         logger.info("EventBus#post(" + event.getClass().getName() + ")");
 
         for (Object listener : eventListeners.get(event.getClass().getCanonicalName())) {
@@ -111,8 +109,6 @@ public class EventBus {
                 }
             }
         }
-
-        lock.readLock().unlock();
 
         return event;
     }
