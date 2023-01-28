@@ -50,11 +50,14 @@ public class VelociraptorAPI {
             this.paymentAPI = impl.getPaymentImpl();
             this.areaApi = impl.getAreaImpl();
 
-            this.EVENT_BUS = new EventBus(logger);
+            if (EVENT_BUS == null) {
+                EVENT_BUS = new EventBus(logger);
+            }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             throw new RuntimeException("Es ist ein Fehler beim Laden der Velociraptor API aufgetreten", e);
         }
     }
+
     /**
      * Gibt die Area API zurück.
      */

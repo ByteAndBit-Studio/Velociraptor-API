@@ -92,7 +92,7 @@ public class EventBus {
         logger.info("EventBus#post(" + event.getClass().getName() + ")");
 
         for (Object listener : eventListeners.getOrDefault(event.getClass().getName(), Collections.emptyList())) {
-            logger.debug(String.format("EventBus: Prüfe Klasse %s auf Ankaufmethoden", listener.getClass().getName()));
+            logger.debug(String.format("EventBus: Prüfe Klasse %s auf Eventmethoden", listener.getClass().getName()));
 
             for (Method m : listener.getClass().getMethods()) {
                 if (!m.isAnnotationPresent(EventHandler.class)) {
