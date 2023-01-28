@@ -51,11 +51,11 @@ public class EventBus {
             }
             Class<?> parameterType = m.getParameterTypes()[0];
 
-            logger.info(String.format("EventBus registriert folgende Methode %s#%s(%s)", o.getClass().getName(), m.getName(), parameterType.getCanonicalName()));
-            List<Object> listeners = eventListeners.getOrDefault(parameterType.getCanonicalName(), new ArrayList<>());
+            logger.info(String.format("EventBus registriert folgende Methode %s#%s(%s)", o.getClass().getName(), m.getName(), parameterType.getName()));
+            List<Object> listeners = eventListeners.getOrDefault(parameterType.getName(), new ArrayList<>());
             listeners.add(o);
 
-            eventListeners.put(parameterType.getCanonicalName(), listeners);
+            eventListeners.put(parameterType.getName(), listeners);
         }
 
         lock.writeLock().unlock();
@@ -76,10 +76,10 @@ public class EventBus {
                 continue;
             }
             Class<?> parameterType = m.getParameterTypes()[0];
-            List<Object> listeners = eventListeners.getOrDefault(parameterType.getCanonicalName(), new ArrayList<>());
+            List<Object> listeners = eventListeners.getOrDefault(parameterType.getName(), new ArrayList<>());
             listeners.remove(o);
 
-            eventListeners.put(parameterType.getCanonicalName(), listeners);
+            eventListeners.put(parameterType.getName(), listeners);
         }
 
         lock.writeLock().unlock();
@@ -91,7 +91,9 @@ public class EventBus {
     public <T> T post(T event) {
         logger.info("EventBus#post(" + event.getClass().getName() + ")");
 
-        for (Object listener : eventListeners.getOrDefault(event.getClass().getCanonicalName(), Collections.emptyList())) {
+        for (Object listener : eventListeners.getOrDefault(event.getClass().getName(), Collections.emptyList())) {
+            logger.debug(String.format("EventBus: Prüfe Klasse %s auf Ankaufmethoden", listener.getClass().getName()));
+
             for (Method m : listener.getClass().getMethods()) {
                 if (!m.isAnnotationPresent(EventHandler.class)) {
                     continue;
@@ -99,10 +101,12 @@ public class EventBus {
                 if (m.getParameterCount() != 1) {
                     continue;
                 }
+
                 Class<?> parameterType = m.getParameterTypes()[0];
-                if (!parameterType.getCanonicalName().equals(event.getClass().getCanonicalName())) continue;
+                if (!parameterType.getName().equals(event.getClass().getName())) continue;
 
                 try {
+                    logger.debug(String.format("EventBus#invoke (%s,%s)", listener.getClass().getName(), event.getClass().getName()));
                     m.invoke(listener, event);
                 } catch (Exception e) {
                     e.printStackTrace();
