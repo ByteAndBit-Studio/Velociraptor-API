@@ -20,6 +20,7 @@ public class Item {
 
     private int itemFlags;
 
+    private ItemLimits limits;
     private ItemMetadata metadata;
     private ItemPrice[] prices;
 
@@ -67,6 +68,18 @@ public class Item {
 
     public void setMetadata(ItemMetadata metadata) {
         this.metadata = metadata;
+    }
+
+
+    /**
+     * Gibt die Item Limits zurück.
+     */
+    public ItemLimits getLimits() {
+        return limits;
+    }
+
+    public void setLimits(ItemLimits limits) {
+        this.limits = limits;
     }
 
     /**
