@@ -6,7 +6,7 @@
 
     <groupId>de.byteandbit</groupId>
     <artifactId>velociraptor-api</artifactId>
-    <version>b76</version>
+    <version>GITHUB</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
