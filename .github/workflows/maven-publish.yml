@@ -42,5 +42,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: target/velociraptor-api-GITHUB.jar
-        asset_name: Velociraptor-API-${{ github.ref }}.jar
+        asset_name: Velociraptor-API-${{ github.ref_name }}.jar
         asset_content_type: application/jar
