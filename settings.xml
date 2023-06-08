@@ -2,8 +2,8 @@
     <servers>
         <server>
             <id>byteandbit-release</id>
-            <username>123name</username>
-            <password>123password</password>
+            <username>${env.MAVEN_USERNAME}</username>
+            <password>${env.MAVEN_PASSWORD}</password>
         </server>
     </servers>
 </settings>
