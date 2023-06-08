@@ -8,6 +8,7 @@ package de.byteandbit.velociraptor.api.data.item;
 public class ItemFlags {
     public static final int DISPLAYNAME_EQUALS = 1 << 0;
     public static final int DISPLAYNAME_CONTAINS = 1 << 1;
+    public static final int DISPLAYNAME_EQUALS_IGNORE_CASE = 1 << 19;
     public static final int NOT_USED = 1 << 2;
     public static final int NO_DAMAGE = 1 << 3;
     public static final int REPAIRCOST_EQUALS = 1 << 4;

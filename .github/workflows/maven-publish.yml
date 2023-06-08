@@ -23,8 +23,8 @@ jobs:
 
     - name: Setup maven
       run: |
-        sed -i \'s/123name/\'"$MAVEN_USERNAME"\'/g\' settings.xml
-        sed -i \'s/123password/\'"$MAVEN_PASSWORD"\'/g\' settings.xml
+        sed -i 's/123name/'"$MAVEN_USERNAME"'/g' settings.xml
+        sed -i 's/123password/'"$MAVEN_PASSWORD"'/g' settings.xml
       
     - name: Build with Maven
       run: mvn clean package javadoc:javadoc deploy -s s $GITHUB_WORKSPACE/settings.xml
