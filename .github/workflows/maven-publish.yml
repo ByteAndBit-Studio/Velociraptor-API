@@ -22,7 +22,7 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Setup maven
-    - run: |
+      run: |
         sed -i \'s/123name/\'"$MAVEN_USERNAME"\'/g\' settings.xml
         sed -i \'s/123password/\'"$MAVEN_PASSWORD"\'/g\' settings.xml
       
