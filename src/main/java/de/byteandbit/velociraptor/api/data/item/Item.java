@@ -1,6 +1,7 @@
 package de.byteandbit.velociraptor.api.data.item;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -23,6 +24,35 @@ public class Item {
     private ItemLimits limits;
     private ItemMetadata metadata;
     private ItemPrice[] prices;
+    private ItemAction[] actions;
+
+    /**
+     * @return das {@link ItemMaterial},aus dem das Item besteht.
+     */
+    public ItemMaterial getMaterial(){
+        return this.material;
+    }
+
+    /**
+     * @return die {@link ItemAction}, die nach dem Kauf ausgeführt werden.
+     */
+    public ItemAction[] getActions(){
+        return this.actions;
+    }
+    /**
+        Setzt das Material, aus dem das Item besteht.
+     */
+    public void setMaterial(ItemMaterial material)
+    {
+        this.material = material;
+    }
+    /**
+        Setzt die Aktionen, die mit einem Itemkauf verbunden sind.
+     */
+    public void setActions(ItemAction[] actions)
+    {
+        this.actions = actions;
+    }
 
     /**
      * Gibt die interne ID des Item Eintrags zurück.
