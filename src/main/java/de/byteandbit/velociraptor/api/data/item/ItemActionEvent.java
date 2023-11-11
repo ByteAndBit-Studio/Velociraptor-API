@@ -1,9 +1,7 @@
 package de.byteandbit.velociraptor.api.data.item;
 
-import de.byteandbit.velociraptor.api.data.item.ItemAction;
 import de.byteandbit.velociraptor.api.events.Event;
 import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
-import de.byteandbit.velociraptor.api.events.sell.SellEvent;
 import lombok.Getter;
 
 /**
