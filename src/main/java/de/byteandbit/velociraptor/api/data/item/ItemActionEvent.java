@@ -12,7 +12,7 @@ public class ItemActionEvent<T extends PlayerEvent> extends Event
 {
 	boolean cancelled = false;
 	@Getter
-	final T callingEvent; // aktuell entweder ein SellEvent oder ein BuyEvent
+	final T callingEvent; // aktuell entweder ein AfterSellEvent oder ein AfterBuyEvent
 	@Getter
 	private final ItemAction action;
 	@Getter
