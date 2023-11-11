@@ -3,7 +3,7 @@ package de.byteandbit.velociraptor.api.data.item;
 public class ItemAction
 {
 	public enum ItemActionType{
-		CHAT, DISCORD;
+		CHAT, NOTIFY;
 	}
 
 	public ItemActionType getType()
