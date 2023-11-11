@@ -1,0 +1,33 @@
+package de.byteandbit.velociraptor.api.data.item;
+
+import de.byteandbit.velociraptor.api.data.item.ItemAction;
+import de.byteandbit.velociraptor.api.events.Event;
+import de.byteandbit.velociraptor.api.events.player.PlayerEvent;
+import de.byteandbit.velociraptor.api.events.sell.SellEvent;
+import lombok.Getter;
+
+/**
+ * description missing.
+ */
+@Getter
+public class ItemActionEvent<T extends PlayerEvent> extends Event
+{
+	boolean cancelled = false;
+	@Getter
+	final T callingEvent; // aktuell entweder ein SellEvent oder ein BuyEvent
+	@Getter
+	private final ItemAction action;
+	@Getter
+	private String cancelReason;
+	public void setCancelled(String reason)
+	{
+		this.cancelled = true;
+		this.cancelReason = reason;
+	}
+
+	public ItemActionEvent(ItemAction action, T callingEvent)
+	{
+		this.action = action;
+		this.callingEvent = callingEvent;
+	}
+}

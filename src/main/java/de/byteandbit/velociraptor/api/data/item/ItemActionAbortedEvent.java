@@ -1,4 +1,4 @@
-package de.byteandbit.velociraptor.api.events.purchase;
+package de.byteandbit.velociraptor.api.data.item;
 
 import de.byteandbit.velociraptor.api.events.Event;
 import lombok.Getter;
