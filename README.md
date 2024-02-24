@@ -71,4 +71,4 @@ public class MeineHauptklasse {
 }
 ```
 
-© ByteAndBit Studio UG (haftungsbeschränkt) 2021-2023
+© ByteAndBit Studio UG (haftungsbeschränkt) 2021-2024
