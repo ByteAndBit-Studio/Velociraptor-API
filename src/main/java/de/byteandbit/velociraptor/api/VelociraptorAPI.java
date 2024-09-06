@@ -6,6 +6,7 @@ import de.byteandbit.velociraptor.api.chat.IngameCommandsAPI;
 import de.byteandbit.velociraptor.api.events.EventBus;
 import de.byteandbit.velociraptor.api.payment.PaymentAPI;
 import de.byteandbit.velociraptor.api.pipeline.PipelineAPI;
+import de.byteandbit.velociraptor.api.player.PlayerAPI;
 import de.byteandbit.velociraptor.api.stats.StatsAPI;
 import org.slf4j.Logger;
 
@@ -36,6 +37,7 @@ public class VelociraptorAPI {
     private IngameCommandsAPI ingameCommandsAPI;
     private PaymentAPI paymentAPI;
     private AreaAPI areaApi;
+    private PlayerAPI playerApi;
 
     public VelociraptorAPI() {
         try {
@@ -49,6 +51,7 @@ public class VelociraptorAPI {
             this.ingameCommandsAPI = impl.getCommandsImpl();
             this.paymentAPI = impl.getPaymentImpl();
             this.areaApi = impl.getAreaImpl();
+            this.playerApi = impl.getPlayerImpl();
 
             if (EVENT_BUS == null) {
                 EVENT_BUS = new EventBus(logger);
@@ -84,6 +87,13 @@ public class VelociraptorAPI {
      */
     public ChatAPI getChatAPI() {
         return this.chatApi;
+    }
+
+    /**
+     * Gibt die Player API zurück.
+     */
+    public PlayerAPI getPlayerAPI() {
+        return this.playerApi;
     }
 
     /**

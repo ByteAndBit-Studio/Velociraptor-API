@@ -5,6 +5,7 @@ import de.byteandbit.velociraptor.api.chat.ChatAPI;
 import de.byteandbit.velociraptor.api.chat.IngameCommandsAPI;
 import de.byteandbit.velociraptor.api.payment.PaymentAPI;
 import de.byteandbit.velociraptor.api.pipeline.PipelineAPI;
+import de.byteandbit.velociraptor.api.player.PlayerAPI;
 import de.byteandbit.velociraptor.api.stats.StatsAPI;
 import org.slf4j.Logger;
 
@@ -23,6 +24,8 @@ public interface VelociraptorImpl {
     PaymentAPI getPaymentImpl();
 
     AreaAPI getAreaImpl();
+
+    PlayerAPI getPlayerImpl();
 
     Logger getLogger();
 }
