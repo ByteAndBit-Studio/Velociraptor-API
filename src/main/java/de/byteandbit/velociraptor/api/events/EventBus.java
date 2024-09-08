@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
@@ -27,6 +27,8 @@ public class EventBus {
     private ReentrantReadWriteLock lock;
     private Map<String, List<Object>> eventListeners;
     private final Logger logger;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final long TIMEOUT_MS = 1000L;
 
     public EventBus(Logger logger) {
         this.logger = logger;
@@ -91,28 +93,39 @@ public class EventBus {
     public <T> T post(T event) {
         logger.info("EventBus#post(" + event.getClass().getName() + ")");
 
-        for (Object listener : eventListeners.getOrDefault(event.getClass().getName(), Collections.emptyList())) {
-            logger.debug(String.format("EventBus: Prüfe Klasse %s auf Eventmethoden", listener.getClass().getName()));
+        Future<T> future = executor.submit(() -> {
+            for (Object listener : eventListeners.getOrDefault(event.getClass().getName(), Collections.emptyList())) {
+                logger.debug(String.format("EventBus: Prüfe Klasse %s auf Eventmethoden", listener.getClass().getName()));
 
-            for (Method m : listener.getClass().getMethods()) {
-                if (!m.isAnnotationPresent(EventHandler.class)) {
-                    continue;
-                }
-                if (m.getParameterCount() != 1) {
-                    continue;
-                }
+                for (Method m : listener.getClass().getMethods()) {
+                    if (!m.isAnnotationPresent(EventHandler.class)) {
+                        continue;
+                    }
+                    if (m.getParameterCount() != 1) {
+                        continue;
+                    }
 
-                Class<?> parameterType = m.getParameterTypes()[0];
-                if (!parameterType.getName().equals(event.getClass().getName())) continue;
+                    Class<?> parameterType = m.getParameterTypes()[0];
+                    if (!parameterType.getName().equals(event.getClass().getName())) continue;
 
-                try {
-                    logger.debug(String.format("EventBus#invoke (%s,%s)", listener.getClass().getName(), event.getClass().getName()));
-                    m.invoke(listener, event);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    logger.error("Der EventBus hat einen Fehler geworfen", e);
+                    try {
+                        logger.info(String.format("EventBus#invoke (%s,%s)", listener.getClass().getName(), event.getClass().getName()));
+                        m.invoke(listener, event);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        logger.error("Der EventBus hat einen Fehler geworfen", e);
+                    }
                 }
             }
+            return event;
+        });
+
+        try {
+            return future.get(TIMEOUT_MS, TimeUnit.MILLISECONDS);
+        } catch (TimeoutException e) {
+            logger.error("EventBus#post hat das Zeitlimit von {} Millisekunden überschritten, aus Sicherheitsgründen wird die Verarbeitung des Plugins abgebrochen!!!", TIMEOUT_MS);
+        } catch (ExecutionException | InterruptedException e) {
+            logger.error("EventBus#post: Ein Fehler ist während der Event-Verarbeitung aufgetreten", e);
         }
 
         return event;
