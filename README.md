@@ -17,7 +17,7 @@ Die API ist unter der [MIT Lizenz](https://github.com/ByteAndBit-Studio/Velocira
 
 ### Dokumentation
 
-Jede Klasse ist ausführlich mit JavaDoc beschrieben. 
+Jede Klasse ist ausführlich mit JavaDoc beschrieben.
 Die JavaDoc findest du [hier](https://byteandbit-studio.github.io/Velociraptor-API/).
 
 Solltest du Probleme oder zusätzliche Fragen zur Benutzung haben
@@ -71,4 +71,4 @@ public class MeineHauptklasse {
 }
 ```
 
-© ByteAndBit Studio UG (haftungsbeschränkt) 2021-2024
+© ByteAndBit Studio UG (haftungsbeschränkt) 2021-2025
