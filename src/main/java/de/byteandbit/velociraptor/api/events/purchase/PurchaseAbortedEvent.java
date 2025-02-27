@@ -12,8 +12,8 @@ import java.util.Set;
 public class PurchaseAbortedEvent extends PurchaseEvent {
     private AbortReason reason;
 
-    private float yaw = -1F;
-    private float pitch = -1F;
+    private float yaw = Float.MIN_VALUE;
+    private float pitch = Float.MIN_VALUE;
 
     public PurchaseAbortedEvent(String playerName, String playerUUID, Set<Item> items, Map<Item, Integer> acceptedItems, double payAmount, AbortReason reason) {
         super(playerName, playerUUID, items, acceptedItems, payAmount);
