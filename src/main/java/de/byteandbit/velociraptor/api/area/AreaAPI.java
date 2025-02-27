@@ -6,4 +6,8 @@ package de.byteandbit.velociraptor.api.area;
  */
 public interface AreaAPI {
     boolean isOnBotPos();
+
+    void setHandler(AreaHandler handler);
+
+    void resetHandler();
 }

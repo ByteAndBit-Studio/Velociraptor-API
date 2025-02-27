@@ -1,7 +1,5 @@
 package de.byteandbit.velociraptor.api.chat;
 
-import lombok.AllArgsConstructor;
-
 import java.util.function.Consumer;
 
 /**
@@ -17,10 +15,11 @@ public interface ChatAPI {
      * @see ChatMessage
      */
     void send(ChatMessage message);
+
     /**
      * Sendet eine Nachricht oder einen Befehl.
      *
-     * @param message die Nachricht/der Befehl
+     * @param message  die Nachricht/der Befehl
      * @param callback callback für den tatsächlichen Zeitpunkt des Sendens
      * @see ChatMessage
      */

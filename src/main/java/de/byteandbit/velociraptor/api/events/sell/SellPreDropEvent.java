@@ -12,8 +12,16 @@ public class SellPreDropEvent extends SellEvent {
     private boolean cancelled;
     private String cancelReason;
 
+    private float yaw = -1F;
+    private float pitch = -1F;
+    
     public SellPreDropEvent(String playerName, String playerUUID, Map<Item, Integer> items, double payAmount) {
         super(playerName, playerUUID, items, payAmount);
+    }
+
+    public void setYawPitchForDrop(float yaw, float pitch) {
+        this.yaw = yaw;
+        this.pitch = pitch;
     }
 
     /**
