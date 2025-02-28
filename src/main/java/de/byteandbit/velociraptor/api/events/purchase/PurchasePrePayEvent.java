@@ -13,8 +13,16 @@ public class PurchasePrePayEvent extends PurchaseEvent {
     private boolean cancelled;
     private String cancelReason;
 
+    private float yaw = Float.MIN_VALUE;
+    private float pitch = Float.MIN_VALUE;
+
     public PurchasePrePayEvent(String playerName, String playerUUID, Set<Item> items, Map<Item, Integer> acceptedItems, double payAmount) {
         super(playerName, playerUUID, items, acceptedItems, payAmount);
+    }
+
+    public void setYawPitchForDrop(float yaw, float pitch) {
+        this.yaw = yaw;
+        this.pitch = pitch;
     }
 
     /**
@@ -38,5 +46,13 @@ public class PurchasePrePayEvent extends PurchaseEvent {
 
     public void setCancelReason(String cancelReason) {
         this.cancelReason = cancelReason;
+    }
+
+    public float getYaw() {
+        return yaw;
+    }
+
+    public float getPitch() {
+        return pitch;
     }
 }

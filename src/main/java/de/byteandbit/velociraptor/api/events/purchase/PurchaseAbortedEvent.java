@@ -12,17 +12,9 @@ import java.util.Set;
 public class PurchaseAbortedEvent extends PurchaseEvent {
     private AbortReason reason;
 
-    private float yaw = Float.MIN_VALUE;
-    private float pitch = Float.MIN_VALUE;
-
     public PurchaseAbortedEvent(String playerName, String playerUUID, Set<Item> items, Map<Item, Integer> acceptedItems, double payAmount, AbortReason reason) {
         super(playerName, playerUUID, items, acceptedItems, payAmount);
         this.reason = reason;
-    }
-
-    public void setYawPitchForDrop(float yaw, float pitch) {
-        this.yaw = yaw;
-        this.pitch = pitch;
     }
 
     /**
@@ -30,14 +22,6 @@ public class PurchaseAbortedEvent extends PurchaseEvent {
      */
     public AbortReason getReason() {
         return reason;
-    }
-
-    public float getYaw() {
-        return yaw;
-    }
-
-    public float getPitch() {
-        return pitch;
     }
 
     public enum AbortReason {
