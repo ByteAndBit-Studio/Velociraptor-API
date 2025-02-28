@@ -32,6 +32,14 @@ public class PurchaseAbortedEvent extends PurchaseEvent {
         return reason;
     }
 
+    public float getYaw() {
+        return yaw;
+    }
+
+    public float getPitch() {
+        return pitch;
+    }
+
     public enum AbortReason {
         NICKED,
         NOT_IN_ZONE,

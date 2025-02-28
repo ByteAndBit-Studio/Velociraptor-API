@@ -47,4 +47,11 @@ public class SellPreDropEvent extends SellEvent {
         this.cancelReason = cancelReason;
     }
 
+    public float getYaw() {
+        return yaw;
+    }
+
+    public float getPitch() {
+        return pitch;
+    }
 }
